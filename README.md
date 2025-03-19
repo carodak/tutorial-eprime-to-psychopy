@@ -28,10 +28,7 @@ Below we have the welcome screen which represents the second E-Object. This is t
 
 We are going to start by reproducing this Welcome screen in PsychoPy. Below, we can see the general structure of the project reproduced in PsychoPy. 
 
-A Routine is the basic building block of PsychoPy experiments. We are going to click on the “Insert Routine” button on the bottom left and name it “welcome”. \
-
-
-![Enter image alt description](Images/wwD_Image_5.png)
+A Routine is the basic building block of PsychoPy experiments. We are going to click on the “Insert Routine” button on the bottom left and name it “welcome”.
 
 ### Overview of the different components
 
@@ -45,6 +42,8 @@ The "Joystick" component facilitates the collection of input from a connected jo
 
 The "Keyboard" component is designed to record responses from specified keys, allowing for the configuration of parameters such as the response window duration. It enables the capture of timing information for key presses or releases.
 
+![Enter image alt description](Images/Image_12.png)
+
 ### Code component
 
 We will start editing the code component. This component provides the flexibility to program in Python for running the project locally on our computer or in JavaScript for running the project online on Pavlovia servers.
@@ -52,18 +51,19 @@ We will start editing the code component. This component provides the flexibilit
 In our experiment, we use the code component to set the text of another text component named 'text_wel'. The specific text is determined by 'text_wel.text '. Below is an example of Python and JavaScript code to modify this text:
 
 Below is a description of each of the tabs in the code component:
+![Enter image alt description](Images/Image_13.png)
 
-Before Experiment: Code in this tab runs before the experiment starts, often used for initializing global variables or setting up parameters that will be used throughout the experiment.
+- Before Experiment: Code in this tab runs before the experiment starts, often used for initializing global variables or setting up parameters that will be used throughout the experiment.
 
-Begin Experiment: Code in this tab runs once at the beginning of the experiment, after "Before Experiment," for tasks like opening files or setting-up elements that need to be ready before the experiment starts.
+- Begin Experiment: Code in this tab runs once at the beginning of the experiment, after "Before Experiment," for tasks like opening files or setting-up elements that need to be ready before the experiment starts.
 
-Begin Routine: Code here runs at the start of each routine (a routine being a segment of the experiment, like a trial period), often used to initialize/reset routine-specific variables such as participant responses.
+- Begin Routine: Code here runs at the start of each routine (a routine being a segment of the experiment, like a trial period), often used to initialize/reset routine-specific variables such as participant responses.
 
-Each Frame: Code here runs on every displayed frame, suitable for controlling rapidly changing visual elements or recording real-time responses.
+- Each Frame: Code here runs on every displayed frame, suitable for controlling rapidly changing visual elements or recording real-time responses.
 
-End Routine: The code placed here will be executed at the end of each routine. This can be used to record data specific to a routine or to perform calculations based on the participant's actions during that routine.
+- End Routine: The code placed here will be executed at the end of each routine. This can be used to record data specific to a routine or to perform calculations based on the participant's actions during that routine.
 
-End Experiment: Code here runs at the end of the experiment. It may be used for closing files, saving data, or performing any final cleanup or processing needed.
+- End Experiment: Code here runs at the end of the experiment. It may be used for closing files, saving data, or performing any final cleanup or processing needed.
 
 Each tab provides the opportunity to insert code at a specific point in the experiment, giving us very precise control over how our study unfolds.
 
@@ -79,17 +79,25 @@ The duration is set to None so the Text will last until the routine ends. There 
 
 Then we can look at the Joystick component properties:
 
+![Enter image alt description](Images/Image_14.png)
+
+![Enter image alt description](Images/Image_15.png)
+
 Those properties are pretty self-explanatory. We can see that the option End routine on press is set to valid click and that allowed buttons are set to ‘1’ and ‘2’. So when these buttons are pressed the routine stops.
 
 ### Keyboard component
 
 We can look at the Keyboard component properties:
 
+![Enter image alt description](Images/Image_16.png)
+
 We can see that the case ‘Force End of Routine’ is checked. The Allowed Keys are ‘1’, ‘2’, ‘esc’. The routine will stop and go to the next routine if one of those keys is pressed.
 
 ## Separating different practices
 
-In the E-Prime project, we used a table to separate the practice of single blocks from the practice of associative blocks
+In the E-Prime project, we used a table to separate the practice of single blocks from the practice of associative blocks.
+
+![Enter image alt description](Images/Image_17.png)
 
 This distinction is done differently in PsychoPy, we can simply create different routines there.
 
@@ -97,6 +105,7 @@ This distinction is done differently in PsychoPy, we can simply create different
 
 Then we have a procedure in the structure of the Eprime project. In E-Prime, the procedure object is used to present a sequence of events.
 
+![Enter image alt description](Images/Image_18.png)
 
 The E-Prime procedure aligns closely with the PsychoPy routine, requiring minimal additional adjustments. Notably, we streamlined instructions (P1, P2, P3, etc.) into a single routine named "instructions," and we defined transitions between instructions using the code component.
 
@@ -144,9 +153,15 @@ For the 'practice_block' properties, the path to the CSV file with the experimen
 
 Now we can go through each row of the csv and extract some information like 'instr_text_1_en', 'instr_text_2_en', etc. The values associated with these columns are going to define the text component in our routine:
 
+![Enter image alt description](Images/Image_19.png)
+
 We aim to repeat this practice indefinitely so we set a high number of repetitions: 
 
+![Enter image alt description](Images/Image_20.png)
+
 Next, we can implement a code component that triggers an exit from the practice when a specific key is pressed:
+
+![Enter image alt description](Images/Image_21.png)
 
 Pressing the "t" key marks the completion of the practice and ends the current routine. Additionally, the variable 'good_response,' responsible for counting correct answers, is reset to 0. This reset occurs when either redoing the practice or proceeding to the next trial.
 
@@ -154,15 +169,23 @@ Pressing the "t" key marks the completion of the practice and ends the current r
 
 Here is how the stimulus look in E-prime:
 
+![Enter image alt description](Images/Image_22.png)
+
 In the current task, both pictures are presented simultaneously, and participants respond with a 'yes' or 'no' to the stimuli (which is a question).
 
 In the PsychoPy project, we adopt a different approach. The first image is displayed, followed by the stimuli, and then the second image. Participants are allowed to respond only when the second image appears.
 
 Below is the structure of the practice routine in the PsychoPy task:
 
+![Enter image alt description](Images/Image_23.png)
+
 Similar to the approach taken with the instructions, we will establish the conditions for the practice loop using a variable containing the path of the CSV file intended for the practice.
 
+![Enter image alt description](Images/Image_24.png)
+
 The CSV file is going to be pretty much exactly the same than the table we have in the E-prime task: 
+
+![Enter image alt description](Images/Image_25.png)
 
 In the code component of the routine, we set the pictures of the image components using the values specified in the CSV file.
 
@@ -170,15 +193,23 @@ In the code component of the routine, we set the pictures of the image component
 
 To fetch images from the CSV file, we utilize the column names that represent each image and save them into variables.
 
+![Enter image alt description](Images/Image_26.png)
+
 We can then add these variables to the image components:
+
+![Enter image alt description](Images/Image_27.png)
 
 The picture now changes with each trial.
 
 In the ‘Each Frame’ tab of the code components we have the display logic of the routine:
 
+![Enter image alt description](Images/Image_28.png)
+
 The code monitors various components in a routine, such as items, questions, joystick buttons, and timers. It sets flags or response values based on their status, capturing participant interactions or the component's current state.
 
 Then in the ‘End Routine’ tab we have the logic that occurs after each loop: 
+
+![Enter image alt description](Images/Image_29.png)
 
 Here we are organizing the information which will appear in the CSV output at the end of the experiment.
 
@@ -199,6 +230,8 @@ In the PsychoPy project, we wanted to add the main trials after the practice. Fo
 We can set up the keyboard to end the routine when we press the ‘1’ or ‘2’.
 
 We have a countdown before the start of the experiment so we can create a new routine 'ctwdown':
+
+![Enter image alt description](Images/Image_30.png)
 
 We can create a countdown before displaying the trial using the expression $int(abs(round(5 - t, ndigits = 1))). This is what this expression does:
 
