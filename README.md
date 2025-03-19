@@ -30,6 +30,8 @@ We are going to start by reproducing this Welcome screen in PsychoPy. Below, we 
 
 A Routine is the basic building block of PsychoPy experiments. We are going to click on the “Insert Routine” button on the bottom left and name it “welcome”.
 
+![Enter image alt description](Images/Image_31.png)
+
 ### Overview of the different components
 
 Then once the routine is created, we can add components to it on the right panel (Code, Text, Joystick, Keyboard, etc.).
@@ -50,8 +52,9 @@ We will start editing the code component. This component provides the flexibilit
 
 In our experiment, we use the code component to set the text of another text component named 'text_wel'. The specific text is determined by 'text_wel.text '. Below is an example of Python and JavaScript code to modify this text:
 
-Below is a description of each of the tabs in the code component:
 ![Enter image alt description](Images/Image_13.png)
+
+Below is a description of each of the tabs in the code component:
 
 - Before Experiment: Code in this tab runs before the experiment starts, often used for initializing global variables or setting up parameters that will be used throughout the experiment.
 
